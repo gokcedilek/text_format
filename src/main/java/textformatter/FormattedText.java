@@ -6,15 +6,23 @@ public class FormattedText {
 	private String firstLine;
 	private FormattedText remainingText;
 	private FormattedText lastLine;
+	private static final String EMPTY = "";
 
 	/* ** Rep Invariant
-	      - true (weakest invariant)
+	      - firstLine is not null
+	      - lastLine is not null
 	   ** Abstraction Function
 	      - the text is firstLine + remainingText.toString() when firstLine and remainingText are not null
 	      - if firstLine is null then the text represented is empty text
 	      - if firstLine is not null and remainingText is null then text is only firstLine
 	 */
 
+
+	public FormattedText() {
+	    firstLine = EMPTY;
+	    lastLine = this;
+	    remainingText = null;
+    }
 
 	/**
 	 * Create a new FormattedText object
@@ -23,8 +31,8 @@ public class FormattedText {
 	 */
 	public FormattedText(String line) {
 		firstLine = line;
-		remainingText = null;
 		lastLine = this;
+        remainingText = null;
 	}
 
 	/**
@@ -38,18 +46,24 @@ public class FormattedText {
 	public boolean add(String line) {
 		if (line == null)
 			return false;
-		if (line.equals(""))
+		if (line.equals(EMPTY))
 			return false;
 
-		if (firstLine == null) {
+		if (firstLine == EMPTY) {
 			firstLine = line;
 			lastLine = this;
 		} else {
-			FormattedText newline = new FormattedText();
-			newline.firstLine = line;
-			lastLine.remainingText = newline;
-			lastLine = newline;
-		}
+            FormattedText newline = new FormattedText(line);
+            lastLine = newline;
+            FormattedText next = remainingText;
+            FormattedText prev = this;
+            while (next != null) {
+                prev = next;
+                next = next.remainingText;
+                prev.lastLine = newline;
+            }
+            prev.remainingText = newline;
+        }
 		return true;
 	}
 
@@ -66,7 +80,7 @@ public class FormattedText {
 	public String toString() {
 		FormattedText currline = this;
 		StringBuilder text = new StringBuilder();
-		while (currline.firstLine != null) {
+		while (currline != null) {
 			text.append(currline.firstLine);
 			text.append("\n");
 			currline = currline.remainingText;
