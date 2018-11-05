@@ -17,12 +17,14 @@ public class FormattedText {
 
 
 	/**
-	 * A simple default constructor
+	 * Create a new FormattedText object
+     * @param line is the text to add, is not null,
+     *             and does not contain the newline or carriage return characters
 	 */
-	public FormattedText() {
-		firstLine = null;
+	public FormattedText(String line) {
+		firstLine = line;
 		remainingText = null;
-		lastLine = null;
+		lastLine = this;
 	}
 
 	/**
@@ -64,10 +66,13 @@ public class FormattedText {
 	public String toString() {
 		FormattedText currline = this;
 		StringBuilder text = new StringBuilder();
-		while (currline != null) {
+		while (currline.firstLine != null) {
 			text.append(currline.firstLine);
 			text.append("\n");
 			currline = currline.remainingText;
+			if (currline == null) {
+			    break;
+            }
 		}
 		return text.toString();
 	}
