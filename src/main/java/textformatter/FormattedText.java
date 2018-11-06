@@ -38,7 +38,8 @@ public class FormattedText {
 	/**
 	 * 
 	 * @param line
-	 *            represents a line of text
+	 *            is the text to add, is not null,
+     *            and does not contain the newline or carriage return characters
 	 * @return true after the new line of text has been added to the existing
 	 *         except when line is null or "" in which case nothing is added and
 	 *         false is returned
