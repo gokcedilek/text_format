@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/exercise14-gokcedilek.iml" filepath="$PROJECT_DIR$/exercise14-gokcedilek.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/exercise14-gokcedilek_main.iml" filepath="$PROJECT_DIR$/.idea/modules/exercise14-gokcedilek_main.iml" group="exercise14-gokcedilek" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/exercise14-gokcedilek_test.iml" filepath="$PROJECT_DIR$/.idea/modules/exercise14-gokcedilek_test.iml" group="exercise14-gokcedilek" />
+    </modules>
+  </component>
+</project>

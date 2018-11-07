@@ -49,7 +49,6 @@ public class FormattedText {
 			return false;
 		if (line.equals(EMPTY))
 			return false;
-
 		if (firstLine == EMPTY) {
 			firstLine = line;
 			lastLine = this;
@@ -74,7 +73,21 @@ public class FormattedText {
 	public int numlines() {
 		// TODO: Implement this method
 		int cnt = 0;
-		return cnt;
+		if(firstLine == EMPTY) return cnt;
+		cnt=cnt+1;
+		FormattedText next = remainingText;
+		FormattedText prev = this;
+		int count= countLines(cnt, next);
+		return count;
+	}
+
+	private int countLines(int count, FormattedText next){
+		if(next==null){
+			return count;
+		}
+		next=next.remainingText;
+		count=count+1;
+		return countLines(count,next);
 	}
 
 	@Override

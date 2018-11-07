@@ -19,6 +19,7 @@ public class TextFormatTest {
 		assertEquals(1, text.numlines());
 	}
 
+
 	@Test
 	public void test3() {
 		FormattedText text = new CenteredText("Help!", 30);
@@ -64,6 +65,7 @@ public class TextFormatTest {
 		assertEquals(expectedOutput, text.toString());
 		assertEquals(2, text.numlines());
 	}
+
 
 	@Test
 	public void test9() {
